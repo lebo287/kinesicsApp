@@ -1,10 +1,9 @@
-
 :root {
   --text-color: rgb(219, 219, 219);
   --bg-card: #064cb4ba;
   --blue: #064cb4;
   --light-blue: #0099fe;
-  --radius: .5rem;
+  --radius: 0.5rem;
 }
 
 * {
@@ -22,7 +21,6 @@ body {
   background-size: cover;
   background-color: #064cb4;
 }
-
 
 .center-layout {
   height: 100vh;
@@ -53,21 +51,32 @@ body {
 
 .auth-card input {
   width: 100%;
-  padding: .7rem 1rem;
+  padding: 0.7rem 1rem;
   border: none;
   border-radius: var(--radius);
 }
 
-.auth-link{
+.modalInput {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  border: solid 1px var(--light-blue);
+  margin: .5rem 0;
+}
+
+.modalHeader {
+  background-color: var(--blue);
+}
+
+.auth-link {
   color: rgb(255, 255, 255) !important;
   text-decoration: underline;
   float: right !important;
   font-weight: 900;
 }
 
-
 .btn {
-  padding: .9rem 1.2rem;
+  padding: 0.9rem 1.2rem;
   border-radius: var(--radius);
   border: none;
   cursor: pointer;
@@ -76,9 +85,9 @@ body {
 }
 
 .btn:hover {
-  box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
--webkit-box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
+  box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
 }
 
 .btn-primary {
@@ -88,25 +97,11 @@ body {
 
 .btn-lg {
   width: 100%;
-} 
+}
 
 .disabled {
   cursor: not-allowed;
-  opacity: .8;
-}
-
-
-@media only screen and (min-width: 768px) {
-  .auth-card {
-    height: auto;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 6rem 3rem;
-    gap: 3rem;
-  }
+  opacity: 0.8;
 }
 
 .option-card {
@@ -124,17 +119,35 @@ body {
 }
 
 .option-card:hover {
-  box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
--webkit-box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 12px -1px rgba(0,0,0,0.75);
+  box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
 }
 
 .option-card img {
-  width: 90px;
+  width: 60px;
 }
 
 .subheader {
   font-weight: bolder;
   font-size: 1.2rem;
   color: var(--blue);
+}
+
+
+@media only screen and (min-width: 768px) {
+  .auth-card {
+    height: auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 3rem;
+    gap: 3rem;
+  }
+
+  .option-card img {
+    width: 120px;
+  }
 }

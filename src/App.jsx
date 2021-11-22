@@ -4,6 +4,7 @@ import Chat from './pages/Chat'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Layout from './components/Layout'
+import Learn from "./pages/Learn"
 
 
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="home" element={<Home />} />
         <Route path="chat" element={<Chat />} />
         <Route path="register" element={<Register />} />
+        <Route path="learn" element={<Learn />} />
     </Routes>
     </Layout>
   )

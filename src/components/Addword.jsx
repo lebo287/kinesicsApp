@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Button, Header, Image, Modal } from "semantic-ui-react"
+import add from "../img/add.svg"
 
 const Addword = ({isAddwordOpen, handleModal}) => {
   const [open, setOpen] = useState(isAddwordOpen);
@@ -13,32 +14,26 @@ const Addword = ({isAddwordOpen, handleModal}) => {
       onClose={() => handleModal()}
       onOpen={() => setOpen(true)}
       open={open}
-      className="animate__animated animate__fadeInUp animate__faster"
+      className="animate__animated animate__fadeInDown"
+      style={{textAlign: "center"}}
     >
-      <Modal.Header>Select a Photo</Modal.Header>
-      <Modal.Content image>
-        <Image size="medium" src="/images/avatar/large/rachel.png" wrapped />
+        <br /><br />
+      {/* <Modal.Header>Select a Photo</Modal.Header> */}
+      <Modal.Content image >
+        <Image size="medium" style={{width: "60px"}} src={add} wrapped />
         <Modal.Description>
-          <Header>Default Profile Image</Header>
-          <p>
-            We've found the following gravatar image associated with your e-mail
-            address.
-          </p>
-          <p>Is it okay to use this photo?</p>
+          <Header color="blue">Add Word</Header>
+          <p>Contribute in kinesics dictionary by adding a Word and a GIF image</p>
+          <input type="text" placeholder="Provide a word" className="modalInput" />
+          <input type="file" className="modalInput" />
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="black" onClick={() => handleModal()}>
-          Nope
-        </Button>
-        <Button
-          content="Yep, that's me"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => handleModal()}
-          positive
-        />
+        <button className="btn"  style={{margin: "0 .5rem"}} >Clear</button>
+        <button className="btn btn-primary" onClick={() => handleModal()}>Submit</button>
+
       </Modal.Actions>
+      <br />
     </Modal>
   );
 };
