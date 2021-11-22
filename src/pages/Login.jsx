@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Alert from '../components/Alert'
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
+  const [showAlert, setShowAlert] = useState(false);
   let navigate = useNavigate();
 
   const handleLogin = () => {
     if (!user.email || !user.password) {
-      alert("Please enter your");
+      setShowAlert(true)
       return;
     }
 
@@ -16,10 +18,12 @@ const Login = () => {
   };
 
   return (
+    <>
+    {showAlert && <Alert setShowAlert />}
     <div className="center-layout">
-      <div className="auth-card animate__animated animate__fadeInDown">
+      <div className="auth-card animate__animated animate__fadeInUp">
         <div className="header">Login</div>
-
+        
         <input
           type="text"
           placeholder="Email"
@@ -40,6 +44,7 @@ const Login = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

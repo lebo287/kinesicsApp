@@ -17,7 +17,7 @@ const Register = () => {
 
   return (
     <div className="center-layout">
-      <div className="auth-card animate__animated animate__fadeInDown">
+      <div className="auth-card animate__animated animate__fadeInUp">
         <div className="header">Register</div>
 
         <input
