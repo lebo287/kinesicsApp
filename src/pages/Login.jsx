@@ -4,7 +4,7 @@ import Alert from "../components/Alert";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   // alert props, use this to open and close the alert
   const [alertProps, setAlertProps] = useState({
@@ -44,7 +44,7 @@ const Login = () => {
       />
 
       <div className="center-layout">
-        <div className="auth-card animate__animated animate__fadeInUp">
+        <div className="auth-card animate__animated animate__fadeInUp animate__faster">
           <div className="header">Login</div>
 
           <input
@@ -60,7 +60,7 @@ const Login = () => {
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <button
-            className="btn btn-primary btn-lg animate__animated animate__fadeInDown animate__slower"
+            className="btn btn-primary btn-lg animate__animated animate__fadeInDown"
             onClick={handleLogin}
           >
             LOGIN
