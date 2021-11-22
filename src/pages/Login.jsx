@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   let navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!user.email || !user.password) {
+
+    if (!user.username || !user.password) {
       alert("Please enter your");
       return;
+    }else if(user.username && user.password){
+  
+      axios.post("https://sign-translate.herokuapp.com/auth/signin", user).then(respond => {
+          console.log(respond);
+          console.log(respond.data.message);
+          
+      }).catch(err => {
+          console.log(err);
+         
+      })
+     
     }
 
     // login logic goes here
@@ -23,8 +36,8 @@ const Login = () => {
         <input
           type="text"
           placeholder="Email"
-          value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          value={user.username}
+          onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
         <input
           type="password"
