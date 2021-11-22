@@ -61,7 +61,7 @@ body {
   padding: 0.7rem 1rem;
   border-radius: var(--radius);
   border: solid 1px var(--light-blue);
-  margin: .5rem 0;
+  margin: 0.5rem 0;
 }
 
 .modalHeader {
@@ -130,10 +130,28 @@ body {
 
 .subheader {
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--blue);
 }
 
+.backbutton {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 500ms;
+  position: absolute;
+  bottom: .5rem;
+  left: calc(50% - 2rem);
+
+}
+
+.backbutton:hover {
+  box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 1px 12px -1px rgba(0, 0, 0, 0.75);
+}
 
 @media only screen and (min-width: 768px) {
   .auth-card {
@@ -148,6 +166,7 @@ body {
   }
 
   .option-card img {
-    width: 120px;
+    width: 80px;
   }
 }
+

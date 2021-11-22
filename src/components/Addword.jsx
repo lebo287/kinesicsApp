@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Button, Header, Image, Modal } from "semantic-ui-react"
+import { Header, Image, Modal } from "semantic-ui-react"
 import add from "../img/add.svg"
 
 const Addword = ({isAddwordOpen, handleModal}) => {
@@ -11,6 +11,7 @@ const Addword = ({isAddwordOpen, handleModal}) => {
 
   return (
     <Modal
+      size="large"
       onClose={() => handleModal()}
       onOpen={() => setOpen(true)}
       open={open}
@@ -18,9 +19,9 @@ const Addword = ({isAddwordOpen, handleModal}) => {
       style={{textAlign: "center"}}
     >
         <br /><br />
-      {/* <Modal.Header>Select a Photo</Modal.Header> */}
       <Modal.Content image >
-        <Image size="medium" style={{width: "60px"}} src={add} wrapped />
+        <Image size="medium" style={{width: "60px", textAlign: "center"}} src={add} wrapped />
+        <br />
         <Modal.Description>
           <Header color="blue">Add Word</Header>
           <p>Contribute in kinesics dictionary by adding a Word and a GIF image</p>

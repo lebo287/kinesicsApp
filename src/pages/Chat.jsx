@@ -1,10 +1,11 @@
-import React from 'react'
+import Backbutton from '../components/Backbutton'
 
 const Chat = () => {
     return (
-        <div>
+        <>
             <h1>chat</h1>
-        </div>
+            <Backbutton />
+        </>
     )
 }
 
