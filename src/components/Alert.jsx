@@ -1,44 +1,60 @@
-import {useState} from 'react'
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+/********************************************** 
+// ⚠️⚠️⚠️ to use the Alert ⚠️⚠️⚠️
+// import it then create a default state for it
 
-const Alert = () => {
+   const [alertProps, setAlertProps] = useState({isOpen: false, header: "", message: "", isError: false});
 
-    const [open, setOpen] = useState(true)
+// use it by simply rendering it and passing the state
 
+    <Alert alertProps={alertProps} handleCloseAlert={() => setAlertProps({isOpen: false})} />
+    
+ ************************************************/
 
-    return (
-        <Modal
-          basic
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
-          size='large'
+import { useState, useEffect } from "react"
+import { Button, Header, Icon, Modal } from "semantic-ui-react"
+
+const Alert = ({ alertProps, handleCloseAlert }) => {
+  const { isOpen, header, message, isError } = alertProps
+  const myIcon = isError ? "warning" : "check";
+
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    setOpen(isOpen)
+  }, [isOpen])
+
+  return (
+    <Modal
+      basic
+      onClose={() => {handleCloseAlert()}}
+      onOpen={() => setOpen(true)}
+      open={open}
+      size="large"
+    >
+      <Header icon>
+        <Icon name={myIcon} />
+        {header}
+      </Header>
+      <Modal.Content>
+        <p style={{ textAlign: "center" }}>{message}</p>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
+          color={isError ? "red" : "blue"}
+          inverted
+          onClick={() => {
+            handleCloseAlert();
+          }}
         >
-          <Header icon>
-            <Icon name='archive' />
-            Archive Old Messages
-          </Header>
-          <Modal.Content>
-            <p style={{textAlign:'center'}}>
-              Your inbox is getting full, would you like us to enable automatic
-              archiving of old messages?
-            </p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button basic color='red' inverted onClick={() => setOpen(false)}>
-              <Icon name='remove' /> No
-            </Button>
-            <Button color='blue' inverted onClick={() => {setOpen(false); }}>
-              <Icon name='checkmark' /> Yes
-            </Button>
-          </Modal.Actions>
-        </Modal>
-      )
-}
+          OK
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  );
+};
 
-Alert.defaultProps = {
-    isOpen: false
-}
+export default Alert;
 
-export default Alert
+
+
 
