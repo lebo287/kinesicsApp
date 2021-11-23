@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Alert from "../components/Alert";
+import Layout from "../components/Layout";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+
 
   // alert props, use this to open and close the alert
   const [alertProps, setAlertProps] = useState({
@@ -16,8 +18,11 @@ const Login = () => {
   });
 
 
+
+
   // login
   const handleLogin = () => {
+
     if (!user.username|| !user.password) {
 
       // set a specific error from the server 🤷🏻‍♂️
@@ -33,34 +38,38 @@ const Login = () => {
   
       axios.post("https://sign-translate.herokuapp.com/auth/signin", user).then(respond => {
        
-      setAlertProps({
+        setAlertProps({
           isOpen: true,
           header: "Error",
-          message: "Successfully Login",
+          message: "Email and Password are required",
           isError: true,
         });
+  
+        navigate("/home");
+       
           
+        return;
       }).catch(err => {
 
         setAlertProps({
           isOpen: true,
           header: "Error",
-          message: err,
+          message: "Email and Password are required",
           isError: true,
         });
          
       })
-     
+      return;
     }
 
     // login logic goes here
 
     // route to home
-    navigate("/home");
+    
   };
 
   return (
-    <>
+    < Layout>
       <Alert
         alertProps={alertProps}
         handleCloseAlert={() => setAlertProps({ isOpen: false })}
@@ -93,7 +102,7 @@ const Login = () => {
           </Link>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -4,6 +4,7 @@ import Addword from "./../components/Addword"
 import learn from "../img/learn.svg"
 import chat from "../img/chat.svg"
 import add from "../img/add.svg"
+import Layout from '../components/Layout'
 
 const Home = () => {
 
@@ -25,7 +26,7 @@ const Home = () => {
   };
 
   return (
-      <>
+      <Layout>
       <Addword isAddwordOpen={isAddwordOpen} handleModal={handleModal} />
     <div className="center-layout">
       <div className="auth-card animate__animated animate__fadeInUp animate__faster">
@@ -43,7 +44,7 @@ const Home = () => {
         ))}
       </div>
     </div>
-    </>
+    </Layout>
   );
 };
 

@@ -1,10 +1,12 @@
-import React from 'react'
+
+import Chathome from '../components/Chathome';
+
 
 const Chat = () => {
     return (
-        <div>
-            <h1>chat</h1>
-        </div>
+
+            <Chathome/>
+     
     )
 }
 

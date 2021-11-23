@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Alert from "../components/Alert";
+import Layout from "../components/Layout";
 
 const Register = () => {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -34,26 +35,36 @@ const Register = () => {
         setAlertProps({
           isOpen: true,
           header: "Error",
-          message: "Successfully Login",
+          message: "Email and Password are required",
           isError: true,
         });
+  
+        navigate("/home");
+
         }).catch(err => {
+
+
+          console.log(err.message);
+          let message = String(err.message);
+
+          if (message === "hhh"){return}
           setAlertProps({
             isOpen: true,
             header: "Error",
-            message: err,
+            message: message,
             isError: true,
           });
+    
         })
 
     }
 
     // login logic goes here
-    navigate("/home");
+    
   };
 
   return (
-    <>
+    <Layout>
       <Alert
         alertProps={alertProps}
         handleCloseAlert={() => setAlertProps({ isOpen: false })}
@@ -85,7 +96,7 @@ const Register = () => {
           </Link>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
