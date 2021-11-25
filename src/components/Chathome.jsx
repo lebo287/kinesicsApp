@@ -15,6 +15,7 @@ function Chathome() {
 
   const location = useLocation();
   console.log(location.pathname);
+  localStorage.setItem('message',"")
 
 
   const [username, setUsername] = useState("");

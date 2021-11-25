@@ -45,7 +45,7 @@ function Chat({ socket, username, room }) {
 
  useEffect(() => {
    if(currentMessage.length <= 0){
-    setCurrentMessage(localStorage.getItem('Message'))
+    setCurrentMessage(localStorage.getItem('message'));
    }
  },[currentMessage.length])
 
