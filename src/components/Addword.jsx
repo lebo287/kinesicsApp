@@ -38,7 +38,7 @@ const Addword = ({isAddwordOpen, handleModal}) => {
     const formData = new FormData();
     formData.append("file", selectedFile, selectedFile.name);
     formData.append("word", word);
-    formData.append("approve", false);
+    formData.append("approved", false);
 
 
     console.log(formData)
@@ -48,9 +48,9 @@ const Addword = ({isAddwordOpen, handleModal}) => {
        
         setAlertProps({
           isOpen: true,
-          header: "Error",
-          message: "Email and Password are required",
-          isError: true,
+          header: "Success",
+          message: "Successfully uploaded",
+          isError: false,
         });
         
         setInterval(() => {
