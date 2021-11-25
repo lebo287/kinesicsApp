@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
-import Wordcard from "../components/Wordcard"
+import Wordcard from "../components/Wordcard";
+import Good from '../img/good.gif';
+import Work from '../img/work.gif';
+import Cardboard from '../img/cardboard.gif';
 
 const Learncarousel = () => {
   const [words, setWords] = useState([]);
@@ -9,34 +12,23 @@ const Learncarousel = () => {
   useEffect(() => {
     setWords([
       {
-        image:"https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 1",
+        image:Good,
+        text: "i am good",
+      },
+      {
+        image:Work,
+        text: "i am going back to work have a great day",
+      },
+      {
+        image:Cardboard,
+        text: "yes check in the cardboard",
       },
       {
         image:
-          "https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 2",
+          "https://i.gifer.com/8ylT.gif",
+        text: "Can't hear you",
       },
-      {
-        image:
-          "https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 3",
-      },
-      {
-        image:
-          "https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 4",
-      },
-      {
-        image:
-          "https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 5",
-      },
-      {
-        image:
-          "https://media.wired.com/photos/6081f4280c9b5877078878e2/master/w_2560%2Cc_limit/business_plaintext_apple_1313768378.jpg",
-        text: "Apple 6",
-      },
+    
     ]);
   }, []);
 
