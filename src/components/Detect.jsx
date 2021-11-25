@@ -1,20 +1,9 @@
-/* eslint-disable no-self-compare */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-// Import dependencies
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { Input } from 'semantic-ui-react';
-import { Grid, Image, Segment } from 'semantic-ui-react';
 
 
 function Detect() {
-
-
-  const navigate = useNavigate();
 
   const [textMessage, setTextMessage] = useState("");
 
@@ -39,6 +28,9 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
         
           console.log(textMessage);
 
+         
+
+          
           // Set styling
           ctx.strokeStyle = labelMap[text]['color']
           ctx.lineWidth = 10
@@ -55,15 +47,12 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
 }
   //GETTING CURRENT ROUTE
 
-  const location = useLocation();
-  // console.log(location.pathname);
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
   // Main function
   const runCoco = async () => {
-  
   
     // https://tensorflowjsrealtimemodel.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json
     const net = await tf.loadGraphModel(
@@ -76,13 +65,10 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
     }, 16.7);
   };
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const context = canvas.getContext('2d')
-    //Our first draw
-    context.fillStyle = '#000000'
-    context.fillRect(0, 0, context.canvas.width, context.canvas.height)
-  }, [])
+
+  const sendMessage = async () =>{
+    localStorage.setItem("message", textMessage);
+  }
 
   const detect = async (net) => {
     // Check data is available
@@ -117,8 +103,7 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
       const scores = await obj[4].array();
 
       // Draw mesh
-      const ctx = canvasRef.current.getContext("2d") || null>(null);
-      
+      const ctx = canvasRef.current.getContext("2d") || null;
 
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx)
@@ -142,30 +127,22 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
     }
   };
 
-
-  const sendMessage = async () => {
-    console.log("i am pressed");
-    localStorage.setItem('Message', textMessage);
-    return navigate("/home");
-  }
-
   useEffect(() => {
     runCoco();
-  }, []);
+  });
+
+
 
   return (
-    
     <>
 
-<div name="viewport" content="width=device-width, user-scalable=no" className="chatRooom">
-      
-      <header >
+    <div>
+    <h1>{textMessage}</h1>
+      <header className="App-header">
         <Webcam
           ref={webcamRef}
           muted={true}
           style={{
-            // eslint-disable-next-line no-undef
- 
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
@@ -178,8 +155,9 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
           }}
         />
 
-
-<canvas id="canvas" ref={canvasRef} width="40" height="80" style={{
+        <canvas
+          ref={canvasRef}
+          style={{
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
@@ -188,25 +166,37 @@ const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) =
             top: 0,
             textAlign: "center",
             zindex: 8,
-            
-          }}>
-
- 
-</canvas>
-        {/* <canvas
-          ref={canvasRef}
-          
-        /> */}
+            width: "100%",
+            height: 480,
+          }}
+        />
       </header>
     </div>
 
-
-    <h1>{textMessage}</h1>
-    <Input action='Enter' value={textMessage} placeholder='Detected gesture..'  onClick={sendMessage}/>
-    <button className="myBtn" onClick={sendMessage}>kjbjyvhgfcgdfgh</button>
-
+      <div style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            bottom:0,
+            top:"80%",
+            textAlign: "center",
+            zindex: 8,
+            width: "100%",
+            height: 480,
+          }}>
+          
+          <h1>{textMessage}</h1>
+          <div class="ui action input">
+            <input type="text" value={textMessage}/>
+            <button class="ui teal icon center labeled button" onClick={sendMessage}>
+              Send
+            </button>
+          </div>
+      </div>
+   
+    
+   
     </>
-  
   );
 }
 

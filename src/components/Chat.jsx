@@ -5,6 +5,10 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import '../utility/Chathome.css';
 import Detect from '../components/Detect'
 import { useNavigate } from "react-router-dom";
+import { Icon } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
+import Test from '../components/Test'
+
 
 
 function Chat({ socket, username, room }) {
@@ -39,9 +43,11 @@ function Chat({ socket, username, room }) {
     });
   }, [socket]);
 
-  const detect = async () => {
-    return navigate("/home");
-  }
+ useEffect(() => {
+   if(currentMessage.length <= 0){
+    setCurrentMessage(localStorage.getItem('Message'))
+   }
+ },[currentMessage.length])
 
 
   return (
@@ -74,24 +80,15 @@ function Chat({ socket, username, room }) {
           })}
         </ScrollToBottom>
       </div>
+       
+      
+         
       <div className="chat-footer">
-      
-          <button class="pl-5" onclick={detect}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-camera-video"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"
-              />
-            </svg>
-          </button>
-      
+    
+
+        <button class="pr-1">
+          <Test/>
+        </button>
 
         <input
           type="text"
@@ -105,9 +102,10 @@ function Chat({ socket, username, room }) {
           }}
         />
 
-        <button class="pl-5" onClick={sendMessage}>&#9658;</button>
+        <button onClick={sendMessage}>&#9658;</button>
       </div>
-    </div>
+      </div>
+  
     </>
   );
 }

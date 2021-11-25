@@ -5,27 +5,22 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Learn from "./pages/Learn";
 import Detect from "./components/Detect";
+import Test from "./components/Test";
 
 const App = () => {
   return (
     <>
- 
-       
 
-   
       <Routes>
-      
         <Route exact path="/" element={<Login />} />
          <Route path="detect" element={<Detect />} />
         <Route path="home" element={<Home />} />
         <Route path="chat" element={<Chat />} />
         <Route path="register" element={<Register />} />
         <Route path="learn" element={<Learn />} />
-        
+        <Route path="test" element={<Test/>} />
       </Routes>
-   
-
-    
+  
     </>
   );
 };
