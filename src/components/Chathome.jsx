@@ -31,10 +31,10 @@ function Chathome() {
 
   return (
 
-    <Layout>
+   
     
 
-<div className="App">
+   <div className="App AppLayout">
       
 
       {!showChat ? (
@@ -62,7 +62,7 @@ function Chathome() {
       )}
     </div>
 
-    </Layout>
+
     
   );
 }

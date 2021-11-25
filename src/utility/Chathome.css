@@ -215,3 +215,10 @@
   .myBtn{
     cursor: pointer;
   }
+
+  .AppLayout {
+    background: url("../img/wavesOpacity.svg") no-repeat center center/50% fixed;
+    background-size: cover;
+    background-color: #064cb4;
+  }
+

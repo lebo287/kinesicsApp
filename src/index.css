@@ -174,3 +174,7 @@ body {
 .chatRooom{
   background-color: #fff !important;
 }
+
+.video-button {
+  margin-left: 100px;
+}

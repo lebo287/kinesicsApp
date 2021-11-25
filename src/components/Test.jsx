@@ -18,7 +18,7 @@ function ModalExampleBasic() {
         name="video"
         color="blue"
         style = {{
-            paddingLeft:"10%",
+            paddingLeft:"3%",
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",

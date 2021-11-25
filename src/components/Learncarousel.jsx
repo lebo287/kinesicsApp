@@ -24,8 +24,7 @@ const Learncarousel = () => {
         text: "yes check in the cardboard",
       },
       {
-        image:
-          "https://i.gifer.com/8ylT.gif",
+        image: "https://i.gifer.com/8ylT.gif",
         text: "Can't hear you",
       },
     

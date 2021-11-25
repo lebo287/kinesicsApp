@@ -86,7 +86,7 @@ function Chat({ socket, username, room }) {
       <div className="chat-footer">
     
 
-        <button class="pr-1">
+        <button >
           <Test/>
         </button>
 
@@ -104,8 +104,7 @@ function Chat({ socket, username, room }) {
 
         <button onClick={sendMessage}>&#9658;</button>
       </div>
-      </div>
-  
+    </div>
     </>
   );
 }
